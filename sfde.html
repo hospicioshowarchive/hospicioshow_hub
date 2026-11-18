@@ -1247,8 +1247,27 @@
 
         });
 
-        let backgroundMusic = document.getElementById("backgroundMusic");
+        const backgroundMusic = document.getElementById("backgroundMusic");
+
         backgroundMusic.volume = 0.85;
+
+        // Tenta iniciar automaticamente
+        backgroundMusic.play().catch(() => {
+
+            // Se o navegador bloquear, espera o primeiro toque
+            const startMusic = () => {
+
+                backgroundMusic.play().catch(() => {});
+
+                document.removeEventListener("touchstart", startMusic);
+                document.removeEventListener("click", startMusic);
+
+            };
+
+            document.addEventListener("touchstart", startMusic);
+            document.addEventListener("click", startMusic);
+
+        });
 
     </script>
 
