@@ -1,0 +1,961 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Autismo Cast</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
+
+<link rel="shortcut icon" href="autismCastLogoPNG.PNG" type="image/x-icon">
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --purple: #a855f7;
+    --blue: #38bdf8;
+    --pink: #ec4899;
+}
+
+body {
+    min-height: 100vh;
+    background: #08080c;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* FUNDO PSICODÉLICO SUAVE */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: -30%;
+    z-index: -2;
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(128, 40, 200, 0.13),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 80% 70%,
+            rgba(30, 100, 220, 0.10),
+            transparent 35%
+        );
+
+    animation: backgroundMove 18s ease-in-out infinite alternate;
+}
+
+@keyframes backgroundMove {
+    from {
+        transform: translate(-2%, -1%) scale(1);
+    }
+
+    to {
+        transform: translate(2%, 2%) scale(1.08);
+    }
+}
+
+/* LUZES NAS BORDAS */
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(168, 85, 247, 0.8),
+            rgba(56, 189, 248, 0.8),
+            transparent
+        ) top / 35% 2px no-repeat,
+
+        linear-gradient(
+            180deg,
+            transparent,
+            rgba(56, 189, 248, 0.8),
+            rgba(236, 72, 153, 0.8),
+            transparent
+        ) right / 2px 35% no-repeat,
+
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(236, 72, 153, 0.8),
+            rgba(168, 85, 247, 0.8),
+            transparent
+        ) bottom / 35% 2px no-repeat,
+
+        linear-gradient(
+            180deg,
+            transparent,
+            rgba(168, 85, 247, 0.8),
+            rgba(56, 189, 248, 0.8),
+            transparent
+        ) left / 2px 35% no-repeat;
+
+    filter: blur(1px) drop-shadow(0 0 7px #a855f7);
+
+    animation: dvdLight 8s linear infinite;
+}
+
+@keyframes dvdLight {
+    0% {
+        background-position:
+            0% 0%,
+            100% 0%,
+            100% 100%,
+            0% 100%;
+    }
+
+    25% {
+        background-position:
+            65% 0%,
+            100% 65%,
+            35% 100%,
+            0% 35%;
+    }
+
+    50% {
+        background-position:
+            100% 0%,
+            100% 100%,
+            0% 100%,
+            0% 0%;
+    }
+
+    75% {
+        background-position:
+            35% 0%,
+            100% 35%,
+            65% 100%,
+            0% 65%;
+    }
+
+    100% {
+        background-position:
+            0% 0%,
+            100% 0%,
+            100% 100%,
+            0% 100%;
+    }
+}
+
+/* CABEÇALHO */
+
+header {
+    padding: 35px 8%;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    background: rgba(10, 10, 16, 0.65);
+    backdrop-filter: blur(12px);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Kaushan Script', cursive;
+    font-size: 34px;
+    font-weight: normal;
+    letter-spacing: 1px;
+    color: #fff;
+
+    text-shadow:
+        0 0 5px rgba(168, 85, 247, 0.7),
+        0 0 15px rgba(168, 85, 247, 0.4);
+
+    transition: 0.3s ease;
+}
+
+.logo:hover {
+    text-shadow:
+        0 0 8px rgba(168, 85, 247, 0.9),
+        0 0 25px rgba(56, 189, 248, 0.6);
+}
+
+.back {
+    color: #999;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.back:hover {
+    color: white;
+    text-shadow: 0 0 12px var(--purple);
+}
+
+/* CONTEÚDO */
+
+main {
+    max-width: 1100px;
+    margin: 60px auto;
+    padding: 0 25px;
+}
+
+.page-title {
+    margin-bottom: 40px;
+}
+
+.page-title h1 {
+    font-size: 34px;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+}
+
+.page-title p {
+    color: #888;
+    font-size: 15px;
+}
+
+/* EPISÓDIOS */
+
+.episode {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+
+    padding: 22px;
+    margin-bottom: 18px;
+
+    background: rgba(22, 20, 32, 0.72);
+    border: 1px solid rgba(168, 85, 247, 0.13);
+    border-radius: 12px;
+
+    backdrop-filter: blur(10px);
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease,
+        background 0.35s ease;
+}
+
+.episode:hover {
+    transform: translateY(-3px);
+
+    background: rgba(35, 27, 49, 0.85);
+
+    border-color: rgba(168, 85, 247, 0.5);
+
+    box-shadow:
+        0 0 15px rgba(168, 85, 247, 0.10),
+        0 0 35px rgba(56, 189, 248, 0.05);
+}
+
+/* CAPAS */
+
+.episode-cover {
+    width: 150px;
+    height: 150px;
+    flex-shrink: 0;
+
+    border-radius: 9px;
+    overflow: hidden;
+
+    background: linear-gradient(
+        135deg,
+        #292039,
+        #11111a
+    );
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    box-shadow: 0 0 18px rgba(168, 85, 247, 0.12);
+}
+
+.episode-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.episode:hover .episode-cover img {
+    transform: scale(1.05);
+}
+
+/* INFORMAÇÕES */
+
+.episode-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.episode-number {
+    color: #b58be8;
+    font-size: 11px;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+}
+
+.episode-info h2 {
+    font-size: 21px;
+    margin-bottom: 10px;
+}
+
+.description {
+    color: #999;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 18px;
+}
+
+/* PLAYER DE ÁUDIO */
+
+audio {
+    width: 100%;
+    height: 42px;
+    max-width: 550px;
+    accent-color: var(--purple);
+}
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+
+    header {
+        padding: 25px 20px;
+    }
+
+    .logo {
+        font-size: 28px;
+    }
+
+    main {
+        margin: 35px auto;
+        padding: 0 15px;
+    }
+
+    .page-title h1 {
+        font-size: 27px;
+    }
+
+    .episode {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 17px;
+        padding: 16px;
+    }
+
+    .episode-cover {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 9;
+    }
+
+    .episode-info h2 {
+        font-size: 19px;
+    }
+
+    audio {
+        max-width: 100%;
+    }
+
+    .episode:hover {
+        transform: none;
+    }
+
+    body::after {
+        opacity: 0.7;
+    }
+}
+
+/* RESPEITA QUEM PREFERE MENOS ANIMAÇÕES */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+
+/* ANIMAÇÃO DE ENTRADA */
+
+@keyframes pageReveal {
+    from {
+        opacity: 0;
+        filter: brightness(0.3);
+    }
+
+    to {
+        opacity: 1;
+        filter: brightness(1);
+    }
+}
+
+@keyframes titleReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+        filter: blur(8px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+@keyframes episodeReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(25px) scale(0.98);
+        filter: blur(5px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+/* Entrada do cabeçalho */
+
+header {
+    animation: pageReveal 1.2s ease both;
+}
+
+/* Entrada do título */
+
+.page-title {
+    animation: titleReveal 1.2s ease both;
+    animation-delay: 0.2s;
+}
+
+/* Entrada individual dos episódios */
+
+.episode {
+    animation: episodeReveal 0.9s ease both;
+}
+
+.episode:nth-of-type(1) {
+    animation-delay: 0.35s;
+}
+
+.episode:nth-of-type(2) {
+    animation-delay: 0.48s;
+}
+
+.episode:nth-of-type(3) {
+    animation-delay: 0.61s;
+}
+
+.episode:nth-of-type(4) {
+    animation-delay: 0.74s;
+}
+
+.episode:nth-of-type(5) {
+    animation-delay: 0.87s;
+}
+
+.episode:nth-of-type(6) {
+    animation-delay: 1s;
+}
+
+.episode:nth-of-type(7) {
+    animation-delay: 1.13s;
+}
+
+.episode:nth-of-type(8) {
+    animation-delay: 1.26s;
+}
+
+.episode:nth-of-type(9) {
+    animation-delay: 1.39s;
+}
+
+#musicButton {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 1000;
+
+    background: rgba(25, 15, 45, 0.9);
+    color: white;
+    border: 1px solid #a855f7;
+    border-radius: 30px;
+
+    padding: 12px 20px;
+    cursor: pointer;
+
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
+    transition: 0.3s;
+}
+
+#musicButton:hover {
+    box-shadow: 0 0 25px #a855f7;
+    transform: scale(1.05);
+}
+
+/* Limpa as informações repetidas dos episódios */
+
+.episode-cover {
+    display: none;
+}
+
+.episode-info h2,
+.episode-info .description {
+    display: none;
+}
+
+.episode {
+    gap: 0;
+}
+
+.episode-info {
+    width: 100%;
+}
+
+/* Remove todos os textos individuais dos episódios */
+
+.episode-number,
+.episode-info h2,
+.episode-info .description {
+    display: none !important;
+}
+
+/* Player ocupa todo o espaço */
+
+.episode-info {
+    width: 100%;
+    flex: 1;
+}
+
+/* Remove número, capa e título dos episódios */
+.episode-cover,
+.episode-number,
+.episode-info h2 {
+    display: none !important;
+}
+
+/* Organiza o player e a descrição */
+.episode-info {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Player do Spotify */
+.episode-info iframe {
+    width: 100%;
+    border: none;
+    border-radius: 12px;
+}
+
+/* Descrição abaixo do player */
+.episode-info .description {
+    display: block !important;
+    opacity: 0.55;
+    font-size: 13px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+
+.episode-info .description {
+    display: block !important;
+    opacity: 1;
+    color: #aaa5bd;
+    font-size: 13px;
+    line-height: 1.7;
+    letter-spacing: 0.3px;
+
+    margin-top: 4px;
+    padding: 10px 14px;
+
+    border-left: 2px solid #9b5cff;
+    background: linear-gradient(
+        90deg,
+        rgba(155, 92, 255, 0.09),
+        transparent
+    );
+
+    border-radius: 0 6px 6px 0;
+
+    transition: all 0.3s ease;
+}
+
+.episode-info .description:hover {
+    color: #e0d9f0;
+    border-left-color: #d18aff;
+    background: linear-gradient(
+        90deg,
+        rgba(155, 92, 255, 0.16),
+        transparent
+    );
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-content">
+        <div class="logo">Autismo Cast</div>
+        <a href="index.html" class="back">← Voltar</a>
+    </div>
+</header>
+
+<main>
+
+    
+<main>
+
+    <div class="page-title">
+        <h1>Todos os episódios</h1>
+        <p>Podcast da Família Brasileira.</p>
+    </div>
+
+    <!-- EPISÓDIO 01 -->
+    <section class="episode">
+        <div class="episode-cover">
+            <img src="autismCastLogoPNG.PNG" alt="Capa do episódio 01">
+        </div>
+        <div class="episode-info">
+            <iframe
+                src="https://open.spotify.com/embed/episode/6qUnppeglAsHkP99AHLUjH?utm_source=generator&theme=0&si=44f641d209374cc6"
+                width="100%"
+                height="152"
+                frameborder="0"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy">
+            </iframe>
+                <p class="description">
+                    monark abandona programa e sai entrevistando pessoas na rua..
+                </p>
+        </div>
+    </section>
+
+    <!-- EPISÓDIO 02 -->
+    <section class="episode">
+        <div class="episode-cover">
+            <img src="autismCastLogoPNG.PNG" alt="Capa do episódio 02">
+        </div>
+            <div class="episode-info">
+            <iframe
+                src="https://open.spotify.com/embed/episode/0uzuc8iUXRqcGcu40Ee1Yz?utm_source=generator&theme=0&si=758bf5f32e714bf0"
+                width="100%"
+                height="152"
+                frameborder="0"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy">
+            </iframe>
+                <p class="description">
+                    abordando tópicos sobre o país e a vida com agente back
+                </p>
+            </div>
+    </section>
+
+    <!-- EPISÓDIO 03 -->
+    <section class="episode">
+        <div class="episode-cover">
+            <img src="autismCastLogoPNG.PNG" alt="Capa do episódio 03">
+        </div>
+        <div class="episode-info">
+            <iframe
+                src="https://open.spotify.com/embed/episode/5K7FVwdB9sSnGEVhkJoTP4?utm_source=generator&theme=0&si=ca7a59d96c634963"
+                width="100%"
+                height="152"
+                frameborder="0"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy">
+            </iframe>
+                <p class="description">
+                    falando sobre tecnologia e metas de vida com cocô no tênis
+                </p>
+        </div>
+    </section>
+
+    <!-- EPISÓDIO 04 -->
+    <section class="episode">
+        <div class="episode-cover">
+            <img src="autismCastLogoPNG.PNG" alt="Capa do episódio 04">
+        </div>
+            <div class="episode-info">
+            <iframe
+                src="https://open.spotify.com/embed/episode/0K1SedwlfXo1Raedi6lJxq?utm_source=generator&theme=0&si=2331f35986ef4b77"
+                width="100%"
+                height="152"
+                frameborder="0"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy">
+            </iframe>
+                <p class="description">
+                    
+                </p>
+            </div>
+    </section>
+
+    <!-- EPISÓDIO 05 -->
+    <section class="episode">
+        <div class="episode-cover">
+            <img src="autismCastLogoPNG.PNG" alt="Capa do episódio 05">
+        </div>
+        <div class="episode-info">
+            <iframe
+                src="https://open.spotify.com/embed/episode/3ggR4L5Rk83GGHYVlAuatH?utm_source=generator&theme=0&si=0449cc2d65d04886"
+                width="100%"
+                height="152"
+                frameborder="0"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy">
+            </iframe>
+                <p class="description">
+                    
+                </p>
+        </div>
+    </section>
+
+    <!-- EPISÓDIO 06 -->
+    <section class="episode">
+        <div class="episode-cover">
+            <img src="autismCastLogoPNG.PNG" alt="Capa do episódio 06">
+        </div>
+        <div class="episode-info">
+            <iframe
+                src="https://open.spotify.com/embed/episode/0mmOZR2TXeJMn1dEnoqzhr?utm_source=generator&theme=0&si=d35893c103834908"
+                width="100%"
+                height="152"
+                frameborder="0"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy">
+            </iframe>
+                <p class="">
+                    
+                </p>
+        </div>
+    </section>
+
+    <!-- EPISÓDIO 07 -->
+    <section class="episode">
+        <div class="episode-cover">
+            <img src="autismCastLogoPNG.PNG" alt="Capa do episódio 07">
+        </div>
+        <div class="episode-info">
+            <iframe
+                src="https://open.spotify.com/embed/episode/55scz1J4ky49lJTvR92apF?utm_source=generator&theme=0&si=78bcf477535c4162"
+                width="100%"
+                height="152"
+                frameborder="0"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy">
+            </iframe>
+                <p class="description">
+                    falando sobre aquela putaria de novembro de 2025 no rj
+                </p>
+        </div>
+    </section>
+
+    <!-- EPISÓDIO 08 -->
+    <section class="episode">
+        <div class="episode-cover">
+            <img src="autismCastLogoPNG.PNG" alt="Capa do episódio 08">
+        </div>
+        <div class="episode-info">
+            <iframe
+                src="https://open.spotify.com/embed/episode/6PmJyBb8V8Kj0SqoY4hbd7?utm_source=generator&theme=0&si=2ee22561eeb74f0d"
+                width="100%"
+                height="152"
+                frameborder="0"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy">
+            </iframe>
+                <p class="description">
+                    quem é mais inteligente ? a máquina ou o homem ?
+                </p>
+        </div>
+    </section>
+
+    <!-- EPISÓDIO 09 -->
+    <section class="episode">
+        <div class="episode-cover">
+            <img src="autismCastLogoPNG.PNG" alt="Capa do episódio 09">
+        </div>
+        <div class="episode-info">
+            <iframe
+                src="https://open.spotify.com/embed/episode/7mo0XlYgnxvVRIiY5SucT2?utm_source=generator&theme=0&si=d353201ce9904e2e"
+                width="100%"
+                height="152"
+                frameborder="0"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy">
+            </iframe>
+                <p class="description">
+                    autismocast gravado no sesc interlagos
+                </p>
+        </div>
+    </section>
+
+
+    <!-- EPISÓDIO 10 -->
+    <section class="episode">
+        <div class="episode-cover">
+            <img src="autismCastLogoPNG.PNG" alt="Capa do episódio 10">
+        </div>
+
+        <div class="episode-info">
+            <iframe
+                src="https://open.spotify.com/embed/episode/6orXrzSIq6KiQVv7oqHa2g?utm_source=generator&theme=0&si=bcf69b44df924bd4"
+                width="100%"
+                height="152"
+                frameborder="0"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy">
+            </iframe>
+                <p class="description">
+                    autismocast gravado no vila lobisomen
+                </p>
+        </div>
+    </section>
+
+
+    <!-- EPISÓDIO 11 -->
+    <section class="episode">
+        <div class="episode-cover">
+            <img src="autismCastLogoPNG.PNG" alt="Capa do episódio 10">
+        </div>
+
+        <div class="episode-info">
+            <iframe
+                src="https://open.spotify.com/embed/episode/1jH5fz1CC2xZlu51wIiYWj?utm_source=generator&theme=0&si=e4adc8457f4d46d4"
+                width="100%"
+                height="152"
+                frameborder="0"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy">
+            </iframe>
+                <p class="description">
+                    tentamos ficar milionário no show do milhão..
+                </p>
+        </div>
+    </section>
+
+
+</main>
+
+
+</main>
+
+<!-- Música de fundo -->
+<audio id="backgroundMusic" loop>
+    <source src="autismocast_media/background_song_autismcast.mp3" type="audio/mpeg" > 
+</audio>
+
+<button id="musicButton">♫ Música: OFF</button>
+
+<!-- hover sound -->
+<audio id="hoverSound">
+    <source src="autismocast_media/hover_mouse_autismcast.mp3" type="audio/mpeg" > 
+</audio>
+
+<script>
+// SOMENTE os players dos episódios
+const players = document.querySelectorAll(".episode audio");
+
+// Controle dos episódios
+players.forEach(player => {
+    player.addEventListener("play", () => {
+
+        // Pausa somente os outros episódios
+        players.forEach(other => {
+            if (other !== player) {
+                other.pause();
+            }
+        });
+
+        // Controles da tela de bloqueio
+        if ("mediaSession" in navigator) {
+            navigator.mediaSession.metadata = new MediaMetadata({
+                title: player.dataset.title,
+                artist: "Autismo Cast",
+                album: "Podcast",
+                artwork: []
+            });
+
+            navigator.mediaSession.setActionHandler("play", () => player.play());
+            navigator.mediaSession.setActionHandler("pause", () => player.pause());
+
+            navigator.mediaSession.setActionHandler("seekbackward", () => {
+                player.currentTime = Math.max(0, player.currentTime - 10);
+            });
+
+            navigator.mediaSession.setActionHandler("seekforward", () => {
+                player.currentTime = Math.min(
+                    player.duration || Infinity,
+                    player.currentTime + 10
+                );
+            });
+        }
+    });
+});
+
+
+// MÚSICA DE FUNDO
+const backgroundMusicElement = document.getElementById("backgroundMusic");
+const backgroundMusicButton = document.getElementById("musicButton");
+
+backgroundMusicElement.volume = 0.03;
+
+backgroundMusicElement.play()
+    .then(() => {
+        backgroundMusicButton.textContent = "♫ Música: ON";
+    })
+    .catch(() => {
+        backgroundMusicButton.textContent = "♫ Ativar música";
+    });
+
+backgroundMusicButton.addEventListener("click", () => {
+    if (backgroundMusicElement.paused) {
+        backgroundMusicElement.play().then(() => {
+            backgroundMusicButton.textContent = "♫ Música: ON";
+        });
+    } else {
+        backgroundMusicElement.pause();
+        backgroundMusicButton.textContent = "♫ Música: OFF";
+    }
+});
+
+
+// HOVER SOUND
+const hoverSound = document.getElementById("hoverSound");
+
+hoverSound.volume = 0.35;
+
+document.querySelectorAll(".episode").forEach(episode => {
+    episode.addEventListener("mouseenter", () => {
+        hoverSound.currentTime = 0;
+        hoverSound.play().catch(() => {});
+    });
+});
+
+</script>
+
+</body>
+
+</html>

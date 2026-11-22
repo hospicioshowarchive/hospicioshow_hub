@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Melhores Momentos</title>
+<style>
+:root {
+    --violet: #b78cff;
+    --pink: #f0a1d5;
+    --ink: #090811;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { min-height: 100%; }
+body {
+    min-height: 100vh;
+    color: #f8f4ff;
+    background: var(--ink);
+    font-family: "Segoe UI", Arial, sans-serif;
+    overflow-x: hidden;
+}
+.background {
+    position: fixed;
+    inset: 0;
+    z-index: -3;
+    overflow: hidden;
+    background: #090811;
+}
+.background video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: .78;
+}
+.background::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(90deg, rgba(8,7,17,.82), rgba(8,7,17,.48) 55%, rgba(8,7,17,.76)),
+        linear-gradient(0deg, rgba(8,7,17,.92), transparent 75%),
+        rgba(18,9,30,.24);
+}
+.glow {
+    position: fixed;
+    z-index: -2;
+    width: 620px;
+    height: 620px;
+    top: 18%;
+    right: -260px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(157,92,255,.2), transparent 68%);
+    filter: blur(45px);
+    pointer-events: none;
+}
+.topbar {
+    height: 94px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 0 7vw;
+    border-bottom: 1px solid rgba(255,255,255,.09);
+    background: rgba(9,7,18,.25);
+    backdrop-filter: blur(14px);
+}
+.back {
+    width: 43px;
+    height: 43px;
+    display: grid;
+    place-items: center;
+    color: #f5eaff;
+    text-decoration: none;
+    font-size: 23px;
+    border: 1px solid rgba(255,255,255,.17);
+    border-radius: 50%;
+    background: rgba(255,255,255,.055);
+    transition: .3s ease;
+}
+.back:hover { transform: translateX(-4px); background: rgba(183,140,255,.18); border-color: var(--violet); }
+.logo {
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 5px;
+}
+.logo-sub {
+    margin-top: 4px;
+    color: rgba(236,224,255,.48);
+    font-size: 9px;
+    letter-spacing: 3px;
+}
+main {
+    width: min(1120px, 86%);
+    margin: 0 auto;
+    padding: 92px 0 110px;
+    animation: appear .9s ease both;
+}
+@keyframes appear {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.intro { margin-bottom: 48px; }
+.kicker {
+    margin-bottom: 17px;
+    color: var(--pink);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 5px;
+}
+h1 {
+    max-width: 780px;
+    font-size: clamp(38px, 6vw, 68px);
+    line-height: 1.04;
+    font-weight: 300;
+    letter-spacing: -.8px;
+    text-shadow: 0 6px 35px rgba(0,0,0,.35);
+}
+h1 span {
+    color: var(--violet);
+    font-weight: 600;
+}
+.intro-text {
+    max-width: 560px;
+    margin-top: 19px;
+    color: rgba(242,235,255,.68);
+    font-size: 14px;
+    line-height: 1.8;
+    font-weight: 300;
+}
+.collection-heading {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 17px;
+    color: rgba(243,233,255,.65);
+    font-size: 10px;
+    letter-spacing: 4px;
+}
+.collection-heading::after {
+    content: "";
+    height: 1px;
+    flex: 1;
+    background: linear-gradient(90deg, rgba(183,140,255,.45), transparent);
+}
+.episode-card {
+    display: grid;
+    grid-template-columns: 1.08fr 1fr;
+    min-height: 310px;
+    overflow: hidden;
+    color: inherit;
+    text-decoration: none;
+    border: 1px solid rgba(218,190,255,.22);
+    border-radius: 15px;
+    background: linear-gradient(115deg, rgba(29,20,45,.88), rgba(12,10,22,.83));
+    box-shadow: 0 28px 85px rgba(0,0,0,.4);
+    backdrop-filter: blur(13px);
+    transition: transform .45s ease, border-color .45s ease, box-shadow .45s ease;
+}
+.episode-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(183,140,255,.65);
+    box-shadow: 0 32px 90px rgba(91,48,145,.28);
+}
+.thumbnail {
+    position: relative;
+    min-height: 310px;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 50% 40%, rgba(173,112,255,.32), transparent 65%),
+        linear-gradient(135deg, #33234a, #110d1d);
+}
+.thumbnail img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .75s ease, filter .5s ease;
+}
+.episode-card:hover .thumbnail img { transform: scale(1.05); filter: brightness(.72); }
+.thumb-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 13px;
+    color: rgba(247,238,255,.8);
+    font-size: 10px;
+    letter-spacing: 3px;
+}
+.placeholder-play {
+    width: 60px;
+    height: 60px;
+    display: grid;
+    place-items: center;
+    padding-left: 4px;
+    border: 1px solid rgba(226,204,255,.6);
+    border-radius: 50%;
+    color: #f1e3ff;
+    font-size: 21px;
+    box-shadow: 0 0 30px rgba(183,140,255,.23);
+}
+.play-hover {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    opacity: 0;
+    background: rgba(8,5,15,.18);
+    transition: opacity .35s ease;
+}
+.play-hover span {
+    width: 58px;
+    height: 58px;
+    display: grid;
+    place-items: center;
+    padding-left: 4px;
+    border-radius: 50%;
+    background: rgba(139,82,207,.88);
+    border: 1px solid rgba(255,255,255,.55);
+    box-shadow: 0 0 35px rgba(161,103,255,.5);
+    transform: scale(.82);
+    transition: transform .35s ease;
+}
+.episode-card:hover .play-hover { opacity: 1; }
+.episode-card:hover .play-hover span { transform: scale(1); }
+.episode-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px clamp(25px, 4vw, 48px);
+}
+.episode-tag {
+    margin-bottom: 15px;
+    color: var(--pink);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 4px;
+}
+.episode-title {
+    margin-bottom: 14px;
+    font-size: clamp(25px, 3vw, 36px);
+    line-height: 1.15;
+    font-weight: 400;
+    transition: color .3s ease;
+}
+.episode-card:hover .episode-title { color: #dfc8ff; }
+.description {
+    max-width: 430px;
+    color: rgba(240,232,255,.61);
+    font-size: 13px;
+    line-height: 1.8;
+    font-weight: 300;
+}
+.watch {
+    display: inline-flex;
+    align-items: center;
+    gap: 11px;
+    margin-top: 27px;
+    padding: 13px 19px;
+    color: white;
+    border-radius: 4px;
+    background: linear-gradient(105deg, #8753c5, #603b91);
+    box-shadow: 0 8px 25px rgba(119,72,177,.25);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+.episode-card:hover .watch { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(145,90,220,.4); }
+.footer-note {
+    margin-top: 35px;
+    color: rgba(236,224,255,.35);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-align: center;
+}
+@media (max-width: 760px) {
+    .topbar { height: 82px; padding: 0 6%; }
+    .logo { font-size: 16px; letter-spacing: 3px; }
+    .logo-sub { font-size: 8px; letter-spacing: 2px; }
+    main { width: 88%; padding-top: 65px; }
+    .intro { margin-bottom: 35px; }
+    .episode-card { grid-template-columns: 1fr; }
+    .thumbnail { min-height: 0; aspect-ratio: 16 / 9; }
+    .episode-details { padding: 28px 25px; }
+}
+@media (max-width: 420px) {
+    h1 { font-size: 38px; }
+    .episode-details { padding: 24px 20px; }
+}
+</style>
+</head>
+<body>
+    <!-- COLOQUE O CAMINHO DO VÍDEO DE FUNDO NO SRC -->
+    <div class="background">
+        <video src="melhoresmomentosbackground.mp4" autoplay muted loop playsinline></video>
+    </div>
+    <div class="glow"></div>
+
+    <header class="topbar">
+        <a class="back" href="index.html" aria-label="Voltar para a página inicial">←</a>
+        <div>
+            <div class="logo">MELHORES MOMENTOS</div>
+            <div class="logo-sub">HOSPICIOSHOW</div>
+        </div>
+    </header>
+
+    <main>
+        <section class="intro">
+            <div class="kicker">UMA COLEÇÃO ESPECIAL HOSPICIOSHOW</div>
+            <h1>Momentos que merecem ser <span>revividos.</span></h1>
+            <p class="intro-text">Relembrando momentos mais insanos do hospicioshow, espero que goste!</p>
+        </section>
+
+        <div class="collection-heading">EPISÓDIOS</div>
+
+        <!-- EPISÓDIO 01: adicione o caminho da thumbnail no src abaixo -->
+        <a href="#" class="episode-card"  onclick="location.href=`/melhoresmomentos_player.html`">
+            <div class="thumbnail">
+                <img src="melhoresmomentos_media/thumb1.png" alt="Thumbnail do episódio 1" onerror="this.style.display='none'">
+                <div class="thumb-placeholder">
+                </div>
+                <div class="play-hover"><span>▶</span></div>
+            </div>
+            <div class="episode-details">
+                <div class="episode-tag">EPISÓDIO 01</div>
+                <div class="episode-title">FOMOS EXPULSOS DO SHOOPING, FOMOS A DELEGACIA ?!</div>
+                <p class="description">segurança expulsou a gente do shooping, deu ruim ?!</p>
+                <div class="watch">▶ &nbsp; ASSISTIR EPISÓDIO</div>
+            </div>
+        </a>
+
+        <div class="footer-note">MAIS MOMENTOS EM BREVE</div>
+    </main>
+
+    <audio autoplay loop>
+        <source src="melhoresmomentos_media/musicabackground.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const music = document.querySelector("audio");
+        music.volume = 0.1;
+    </script>
+</body>
+
+</html>

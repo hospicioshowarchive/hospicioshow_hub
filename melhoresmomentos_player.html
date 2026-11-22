@@ -1,0 +1,175 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Reproduzindo vídeo</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #080808;
+    color: white;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Vídeo de fundo */
+
+.background-video {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+    filter: blur(2px) brightness(0.70);
+    transform: scale(1.08);
+}
+
+.background-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: -1;
+}
+
+/* Conteúdo */
+
+.container {
+    width: 90%;
+    max-width: 1050px;
+    margin: auto;
+    padding-top: 65px;
+    padding-bottom: 60px;
+}
+
+/* Player */
+
+.video-player {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 15px 60px rgba(0,0,0,0.6);
+}
+
+.video-player iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Informações */
+
+.video-info {
+    margin-top: 28px;
+}
+
+.video-title {
+    font-size: 29px;
+    font-weight: bold;
+    margin-bottom: 13px;
+}
+
+.video-description {
+    color: #bdbdbd;
+    font-size: 16px;
+    line-height: 1.7;
+    max-width: 850px;
+}
+
+/* Responsividade */
+
+@media (max-width: 600px) {
+    .container {
+        width: 94%;
+        padding-top: 35px;
+    }
+
+    .video-title {
+        font-size: 23px;
+    }
+
+    .video-description {
+        font-size: 14px;
+    }
+}
+
+.back-button {
+    position: absolute;
+    top: 25px;
+    left: 30px;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 11px 17px;
+    background: rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.back-button:hover {
+    background: rgba(255,255,255,0.15);
+    transform: translateX(-3px);
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Vídeo de fundo -->
+<video class="background-video" autoplay muted loop playsinline>
+    <source src="melhoresmomentosbackground.mp4" type="video/mp4">
+</video>
+
+<div class="background-overlay"></div>
+
+<main class="container">
+
+    <!-- Player do Internet Archive -->
+    <div class="video-player">
+        <iframe
+            src="SEU_IFRAME_DO_INTERNET_ARCHIVE"
+            allowfullscreen
+            webkitallowfullscreen="true"
+            mozallowfullscreen="true">
+        </iframe>
+    </div>
+
+    <!-- Informações do vídeo -->
+    <section class="video-info">
+
+        <h1 class="video-title">
+            FOMOS EXPULSOS DO SHOOPING, FOMOS A DELEGACIA ?!
+        </h1>
+
+        <p class="video-description">
+            melhores momentos centrado nos primeiros videos do hospicioshow, relembrando como era foda essa época!
+        </p>
+
+    </section>
+
+</main>
+
+</body>
+
+<a href="melhoresmomentos.html" class="back-button">
+    ← Voltar
+</a>
+</html>
